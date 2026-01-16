@@ -1,314 +1,1103 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sajan Bhujel - Portfolio</title>
-    <style>
-        /* General Reset */
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Sajan Bhujel — Mechanical Engineering (MS) | UAV autonomy, GPS spoofing detection, robust 3D planning." />
+  <meta name="theme-color" content="#0b1220" />
+  <title>Sajan Bhujel — Portfolio</title>
 
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            color: #333;
-            line-height: 1.6;
-            background-color: #fff;
-            display: flex;
-            min-height: 100vh;
-        }
+  <style>
+    /* ---------------------------
+       Modern, clean portfolio UI
+       --------------------------- */
 
-        a {
-            color: #0066cc;
-            text-decoration: none;
-        }
+    :root{
+      --bg: #0b1220;
+      --bg2:#0e1730;
+      --panel: rgba(255,255,255,.06);
+      --panel2: rgba(255,255,255,.08);
+      --border: rgba(255,255,255,.12);
+      --text: rgba(255,255,255,.92);
+      --muted: rgba(255,255,255,.72);
+      --muted2: rgba(255,255,255,.60);
+      --accent: #7c5cff;
+      --accent2:#36d1dc;
+      --shadow: 0 18px 60px rgba(0,0,0,.40);
+      --shadow2: 0 10px 30px rgba(0,0,0,.30);
+      --radius: 18px;
+      --radius2: 14px;
+      --max: 1120px;
+      --navw: 320px;
+      --font: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+    }
 
-        a:hover {
-            text-decoration: underline;
-        }
+    /* Light theme (optional) */
+    html[data-theme="light"]{
+      --bg: #f6f7fb;
+      --bg2:#eef1ff;
+      --panel: rgba(255,255,255,.72);
+      --panel2: rgba(255,255,255,.90);
+      --border: rgba(10,20,40,.10);
+      --text: rgba(10,20,40,.92);
+      --muted: rgba(10,20,40,.70);
+      --muted2: rgba(10,20,40,.58);
+      --shadow: 0 18px 60px rgba(10,20,40,.12);
+      --shadow2: 0 10px 30px rgba(10,20,40,.10);
+    }
 
-        /* Sidebar Navigation */
-        nav {
-            width: 280px;
-            background-color: #f8f9fa;
-            padding: 40px 20px;
-            position: fixed;
-            height: 100%;
-            border-right: 1px solid #eee;
-            overflow-y: auto;
-        }
+    *{ box-sizing:border-box; }
+    html{ scroll-behavior:smooth; }
+    body{
+      margin:0;
+      font-family: var(--font);
+      color: var(--text);
+      background:
+        radial-gradient(1200px 800px at 10% 10%, rgba(124,92,255,.22), transparent 60%),
+        radial-gradient(1000px 600px at 90% 25%, rgba(54,209,220,.18), transparent 60%),
+        linear-gradient(180deg, var(--bg2), var(--bg));
+      min-height: 100vh;
+    }
 
-        .profile-section {
-            text-align: center;
-            margin-bottom: 30px;
-        }
+    a{ color: inherit; text-decoration:none; }
+    a:hover{ text-decoration:none; }
+    .link{
+      color: color-mix(in srgb, var(--accent) 85%, var(--text));
+      text-decoration: none;
+    }
+    .link:hover{ text-decoration: underline; text-underline-offset: 3px; }
 
-        .profile-img {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            background-color: #ddd; /* Placeholder color */
-            margin: 0 auto 15px;
-            object-fit: cover;
-            border: 3px solid #fff;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
+    .skip{
+      position:absolute; left:-999px; top:10px;
+      background: var(--panel2);
+      color: var(--text);
+      padding:10px 12px;
+      border-radius: 12px;
+      border:1px solid var(--border);
+      z-index: 9999;
+    }
+    .skip:focus{ left: 12px; }
 
-        .name {
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin-bottom: 5px;
-        }
+    .layout{
+      display:flex;
+      align-items:flex-start;
+      min-height:100vh;
+    }
 
-        .tagline {
-            font-size: 0.9rem;
-            color: #666;
-            margin-bottom: 20px;
-        }
+    /* ---------------- Sidebar ---------------- */
+    aside{
+      width: var(--navw);
+      position: fixed;
+      inset: 0 auto 0 0;
+      padding: 22px 18px;
+      border-right: 1px solid var(--border);
+      background: color-mix(in srgb, var(--panel2) 80%, transparent);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      overflow:auto;
+    }
 
-        .nav-links {
-            list-style: none;
-        }
+    .brand{
+      display:flex;
+      gap: 12px;
+      align-items:center;
+      padding: 12px;
+      border: 1px solid var(--border);
+      background: var(--panel);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow2);
+    }
 
-        .nav-links li {
-            margin-bottom: 10px;
-        }
+    .avatar{
+      width: 56px;
+      height: 56px;
+      border-radius: 16px;
+      overflow:hidden;
+      border: 1px solid var(--border);
+      background: linear-gradient(135deg, rgba(124,92,255,.35), rgba(54,209,220,.25));
+      display:grid;
+      place-items:center;
+      flex: 0 0 auto;
+    }
+    .avatar img{
+      width:100%;
+      height:100%;
+      object-fit: cover;
+      display:block;
+    }
+    .avatar-fallback{
+      display:none;
+      width:100%;
+      height:100%;
+      place-items:center;
+      font-weight: 800;
+      letter-spacing: .5px;
+      color: var(--text);
+      text-transform: uppercase;
+    }
 
-        .nav-links a {
-            color: #555;
-            font-weight: 500;
-            display: block;
-            padding: 5px 0;
-        }
+    .brand h1{
+      margin:0;
+      font-size: 1.05rem;
+      line-height: 1.2;
+    }
+    .brand p{
+      margin: 2px 0 0 0;
+      font-size: .88rem;
+      color: var(--muted);
+    }
 
-        .nav-links a:hover {
-            color: #000;
-        }
+    .pill-row{
+      display:flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 12px;
+      padding: 0 2px;
+    }
+    .pill{
+      display:inline-flex;
+      align-items:center;
+      gap: 8px;
+      padding: 8px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: var(--panel);
+      font-size: .86rem;
+      color: var(--muted);
+    }
+    .dot{
+      width: 9px; height: 9px; border-radius: 999px;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent) 20%, transparent);
+    }
 
-        .social-links {
-            margin-top: 30px;
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-        }
+    nav{
+      margin-top: 14px;
+      padding: 10px 4px 4px;
+    }
+    .nav-title{
+      font-size:.78rem;
+      letter-spacing:.16em;
+      text-transform: uppercase;
+      color: var(--muted2);
+      margin: 12px 10px 8px;
+    }
 
-        /* Main Content */
-        main {
-            flex: 1;
-            margin-left: 280px; /* Width of sidebar */
-            padding: 60px 80px;
-            max-width: 900px;
-        }
+    .nav-links{
+      list-style:none;
+      padding: 0;
+      margin: 0;
+      display:flex;
+      flex-direction:column;
+      gap: 6px;
+    }
 
-        section {
-            margin-bottom: 60px;
-        }
+    .nav-links a{
+      display:flex;
+      align-items:center;
+      justify-content: space-between;
+      padding: 10px 12px;
+      border-radius: 14px;
+      border: 1px solid transparent;
+      color: var(--muted);
+      transition: .15s ease;
+    }
+    .nav-links a:hover{
+      background: var(--panel);
+      border-color: var(--border);
+      color: var(--text);
+    }
+    .nav-links a.active{
+      background: linear-gradient(135deg,
+        color-mix(in srgb, var(--accent) 18%, transparent),
+        color-mix(in srgb, var(--accent2) 14%, transparent)
+      );
+      border-color: color-mix(in srgb, var(--accent) 28%, var(--border));
+      color: var(--text);
+    }
+    .chev{
+      opacity:.65;
+      font-size:.9rem;
+    }
 
-        h2 {
-            font-size: 1.8rem;
-            border-bottom: 2px solid #eee;
-            padding-bottom: 10px;
-            margin-bottom: 20px;
-            color: #222;
-        }
+    .actions{
+      margin-top: 14px;
+      display:flex;
+      gap: 10px;
+      padding: 0 4px;
+      flex-wrap: wrap;
+    }
 
-        h3 {
-            font-size: 1.2rem;
-            margin-bottom: 5px;
-            color: #333;
-        }
+    .btn{
+      border: 1px solid var(--border);
+      background: var(--panel);
+      color: var(--text);
+      padding: 10px 12px;
+      border-radius: 14px;
+      display:inline-flex;
+      gap: 10px;
+      align-items:center;
+      cursor:pointer;
+      transition: .15s ease;
+      box-shadow: none;
+      font-weight: 650;
+      font-size: .92rem;
+      line-height: 1;
+    }
+    .btn:hover{
+      transform: translateY(-1px);
+      box-shadow: var(--shadow2);
+      background: var(--panel2);
+    }
+    .btn.primary{
+      border-color: color-mix(in srgb, var(--accent) 40%, var(--border));
+      background: linear-gradient(135deg,
+        color-mix(in srgb, var(--accent) 24%, transparent),
+        color-mix(in srgb, var(--accent2) 18%, transparent)
+      );
+    }
+    .btn small{ font-weight: 600; color: var(--muted); }
 
-        .date {
-            font-size: 0.9rem;
-            color: #777;
-            margin-bottom: 10px;
-            display: block;
-        }
+    .social{
+      margin-top: 12px;
+      padding: 0 4px 14px;
+      display:flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .social a{
+      display:inline-flex;
+      align-items:center;
+      gap: 8px;
+      padding: 9px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: var(--panel);
+      color: var(--muted);
+      font-size: .90rem;
+      transition: .15s ease;
+    }
+    .social a:hover{
+      background: var(--panel2);
+      color: var(--text);
+    }
 
-        .item {
-            margin-bottom: 25px;
-        }
+    .tiny{
+      margin-top: 10px;
+      padding: 0 8px;
+      font-size: .82rem;
+      color: var(--muted2);
+    }
 
-        .item p {
-            margin-bottom: 8px;
-        }
+    /* --------------- Main ---------------- */
+    main{
+      margin-left: var(--navw);
+      width: 100%;
+      padding: 34px 26px 80px;
+    }
+    .container{
+      max-width: var(--max);
+      margin: 0 auto;
+    }
 
-        ul.details {
-            list-style-type: disc;
-            margin-left: 20px;
-            color: #444;
-        }
+    .hero{
+      border-radius: calc(var(--radius) + 8px);
+      border: 1px solid var(--border);
+      background: linear-gradient(135deg,
+        color-mix(in srgb, var(--panel2) 75%, transparent),
+        color-mix(in srgb, var(--panel) 60%, transparent)
+      );
+      box-shadow: var(--shadow);
+      overflow:hidden;
+      position: relative;
+    }
+    .hero::before{
+      content:"";
+      position:absolute;
+      inset:-2px;
+      background:
+        radial-gradient(500px 220px at 15% 10%, rgba(124,92,255,.20), transparent 60%),
+        radial-gradient(460px 240px at 85% 35%, rgba(54,209,220,.16), transparent 60%);
+      pointer-events:none;
+    }
 
-        ul.details li {
-            margin-bottom: 5px;
-        }
+    .hero-inner{
+      position:relative;
+      padding: 28px 26px;
+      display:grid;
+      gap: 14px;
+    }
 
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            gap: 20px;
-        }
+    .kicker{
+      display:inline-flex;
+      align-items:center;
+      gap: 10px;
+      width: fit-content;
+      padding: 8px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: var(--panel);
+      color: var(--muted);
+      font-size: .92rem;
+    }
 
-        /* Mobile Responsive */
-        @media (max-width: 768px) {
-            body {
-                flex-direction: column;
-            }
-            nav {
-                width: 100%;
-                height: auto;
-                position: relative;
-                border-right: none;
-                border-bottom: 1px solid #eee;
-            }
-            main {
-                margin-left: 0;
-                padding: 40px 20px;
-            }
-        }
-    </style>
+    .hero h2{
+      margin: 0;
+      font-size: clamp(1.6rem, 2.2vw + 1rem, 2.55rem);
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+    }
+    .hero p{
+      margin: 0;
+      color: var(--muted);
+      font-size: 1.05rem;
+      max-width: 72ch;
+    }
+
+    .hero-cta{
+      display:flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      align-items:center;
+      margin-top: 6px;
+    }
+
+    .grid{
+      margin-top: 22px;
+      display:grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 18px;
+      align-items: start;
+    }
+
+    .card{
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      background: var(--panel);
+      box-shadow: var(--shadow2);
+      padding: 18px 18px;
+    }
+
+    section{
+      margin-top: 18px;
+      scroll-margin-top: 18px;
+    }
+
+    .section-title{
+      display:flex;
+      align-items:flex-end;
+      justify-content: space-between;
+      gap: 14px;
+      margin: 24px 4px 10px;
+    }
+    .section-title h3{
+      margin:0;
+      font-size: 1.35rem;
+      letter-spacing: -0.01em;
+    }
+    .section-title span{
+      color: var(--muted2);
+      font-size: .92rem;
+    }
+
+    .items{
+      display:flex;
+      flex-direction:column;
+      gap: 12px;
+    }
+
+    .item{
+      padding: 16px 16px;
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      background: color-mix(in srgb, var(--panel2) 55%, transparent);
+    }
+
+    .item-head{
+      display:flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 10px;
+      align-items: baseline;
+    }
+
+    .item h4{
+      margin:0;
+      font-size: 1.05rem;
+    }
+    .meta{
+      color: var(--muted2);
+      font-size: .92rem;
+      white-space: nowrap;
+    }
+    .sub{
+      margin: 6px 0 0;
+      color: var(--muted);
+      font-size: .98rem;
+    }
+    ul.bullets{
+      margin: 10px 0 0 18px;
+      color: var(--muted);
+    }
+    ul.bullets li{ margin: 6px 0; }
+
+    .badges{
+      display:flex;
+      flex-wrap:wrap;
+      gap: 8px;
+      margin-top: 10px;
+    }
+    .badge{
+      padding: 7px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: var(--panel);
+      color: var(--muted);
+      font-size: .90rem;
+    }
+
+    .pub{
+      display:flex;
+      flex-direction:column;
+      gap: 10px;
+    }
+    .pub .item{
+      background: linear-gradient(135deg,
+        color-mix(in srgb, var(--panel2) 62%, transparent),
+        color-mix(in srgb, var(--panel) 62%, transparent)
+      );
+    }
+    .pub .sub a{ font-weight: 650; }
+
+    .two-col{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .footer{
+      margin-top: 26px;
+      color: var(--muted2);
+      font-size: .92rem;
+      text-align:center;
+      padding: 12px 0;
+    }
+
+    /* ---------------- Mobile ---------------- */
+    .topbar{
+      display:none;
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      border-bottom: 1px solid var(--border);
+      background: color-mix(in srgb, var(--panel2) 80%, transparent);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+    }
+    .topbar-inner{
+      max-width: var(--max);
+      margin: 0 auto;
+      display:flex;
+      align-items:center;
+      justify-content: space-between;
+      padding: 12px 12px;
+      gap: 10px;
+    }
+    .topbar .mini{
+      display:flex;
+      gap: 10px;
+      align-items:center;
+      min-width: 0;
+    }
+    .topbar .mini strong{
+      display:block;
+      font-size: .98rem;
+      white-space: nowrap;
+      overflow:hidden;
+      text-overflow: ellipsis;
+    }
+    .topbar .mini span{
+      display:block;
+      color: var(--muted2);
+      font-size: .86rem;
+      white-space: nowrap;
+      overflow:hidden;
+      text-overflow: ellipsis;
+    }
+
+    .icon-btn{
+      width: 44px;
+      height: 44px;
+      display:grid;
+      place-items:center;
+      border-radius: 14px;
+      border: 1px solid var(--border);
+      background: var(--panel);
+      color: var(--text);
+      cursor:pointer;
+      transition: .15s ease;
+    }
+    .icon-btn:hover{ background: var(--panel2); }
+
+    .drawer{
+      display:none;
+      padding: 0 12px 12px;
+    }
+    .drawer.open{ display:block; }
+
+    .drawer .nav-links a{
+      background: var(--panel);
+      border-color: var(--border);
+    }
+
+    @media (max-width: 980px){
+      .grid{ grid-template-columns: 1fr; }
+      .two-col{ grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 860px){
+      aside{ display:none; }
+      main{ margin-left: 0; padding: 18px 14px 64px; }
+      .topbar{ display:block; }
+      .hero-inner{ padding: 20px 18px; }
+    }
+
+    @media (prefers-reduced-motion: reduce){
+      html{ scroll-behavior:auto; }
+      .btn:hover{ transform:none; }
+    }
+  </style>
 </head>
+
 <body>
+  <a class="skip" href="#content">Skip to content</a>
 
-    <nav>
-        <div class="profile-section">
-            <img src="profile.jpg" alt="Sajan Bhujel" class="profile-img">
-            <div class="name">Sajan Bhujel</div>
-            <div class="tagline">MS Candidate in Mechanical Engineering<br>University of North Dakota</div>
+  <!-- Mobile top bar -->
+  <header class="topbar" aria-label="Mobile navigation">
+    <div class="topbar-inner">
+      <div class="mini">
+        <div class="avatar" aria-hidden="true" style="width:44px;height:44px;border-radius:14px;">
+          <img src="profile.jpg" alt="" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';" />
+          <div class="avatar-fallback" style="display:none;">SB</div>
         </div>
+        <div style="min-width:0">
+          <strong>Sajan Bhujel</strong>
+          <span>MS Mechanical Eng • UND</span>
+        </div>
+      </div>
 
-        <ul class="nav-links">
-            <li><a href="#about">About</a></li>
-            <li><a href="#education">Education</a></li>
-            <li><a href="#experience">Experience</a></li>
-            <li><a href="#publications">Publications</a></li>
-            <li><a href="#skills">Skills</a></li>
-            <li><a href="#leadership">Leadership</a></li>
-            <li><a href="CV.pdf" target="_blank">Resume (PDF)</a></li>
+      <div style="display:flex; gap:10px;">
+        <button class="icon-btn" id="themeBtnMobile" type="button" aria-label="Toggle theme">🌗</button>
+        <button class="icon-btn" id="menuBtn" type="button" aria-label="Open menu">☰</button>
+      </div>
+    </div>
+
+    <div class="drawer" id="drawer">
+      <nav aria-label="Site sections">
+        <div class="nav-title">Sections</div>
+        <ul class="nav-links" id="navLinksMobile">
+          <li><a href="#about">About <span class="chev">↗</span></a></li>
+          <li><a href="#education">Education <span class="chev">↗</span></a></li>
+          <li><a href="#experience">Experience <span class="chev">↗</span></a></li>
+          <li><a href="#publications">Publications <span class="chev">↗</span></a></li>
+          <li><a href="#skills">Skills <span class="chev">↗</span></a></li>
+          <li><a href="#leadership">Leadership <span class="chev">↗</span></a></li>
+          <li><a href="#contact">Contact <span class="chev">↗</span></a></li>
         </ul>
 
-        <div class="social-links">
-            <a href="mailto:sajan.bhujel@und.edu">Email</a>
-            <a href="https://linkedin.com/in/sajanbhujel" target="_blank">LinkedIn</a>
+        <div class="actions">
+          <a class="btn primary" href="CV.pdf" target="_blank" rel="noreferrer">📄 Resume</a>
+          <a class="btn" href="mailto:sajan.bhujel@und.edu">✉️ Email</a>
+          <a class="btn" href="https://linkedin.com/in/sajanbhujel" target="_blank" rel="noreferrer">in LinkedIn</a>
         </div>
-    </nav>
+      </nav>
+    </div>
+  </header>
 
-    <main>
-        
-        <section id="about">
-            <h2>About Me</h2>
+  <div class="layout">
+    <!-- Desktop sidebar -->
+    <aside aria-label="Sidebar">
+      <div class="brand">
+        <div class="avatar">
+          <img src="profile.jpg" alt="Sajan Bhujel" onerror="this.style.display='none'; document.getElementById('avatarFallback').style.display='grid';" />
+          <div class="avatar-fallback" id="avatarFallback">SB</div>
+        </div>
+        <div>
+          <h1>Sajan Bhujel</h1>
+          <p>MS Candidate • Mechanical Engineering<br/>University of North Dakota</p>
+        </div>
+      </div>
+
+      <div class="pill-row" aria-label="Highlights">
+        <span class="pill"><span class="dot"></span> UAV autonomy</span>
+        <span class="pill"><span class="dot"></span> GPS spoofing detection</span>
+        <span class="pill"><span class="dot"></span> Robust 3D planning</span>
+      </div>
+
+      <nav aria-label="Site sections">
+        <div class="nav-title">Navigate</div>
+        <ul class="nav-links" id="navLinks">
+          <li><a href="#about">About <span class="chev">↗</span></a></li>
+          <li><a href="#education">Education <span class="chev">↗</span></a></li>
+          <li><a href="#experience">Experience <span class="chev">↗</span></a></li>
+          <li><a href="#publications">Publications <span class="chev">↗</span></a></li>
+          <li><a href="#skills">Skills <span class="chev">↗</span></a></li>
+          <li><a href="#leadership">Leadership <span class="chev">↗</span></a></li>
+          <li><a href="#contact">Contact <span class="chev">↗</span></a></li>
+        </ul>
+
+        <div class="actions">
+          <a class="btn primary" href="CV.pdf" target="_blank" rel="noreferrer">📄 Resume (PDF)</a>
+          <button class="btn" id="themeBtn" type="button" aria-label="Toggle theme">🌗 Theme</button>
+        </div>
+
+        <div class="social" aria-label="Social links">
+          <a href="mailto:sajan.bhujel@und.edu">✉️ Email</a>
+          <a href="https://linkedin.com/in/sajanbhujel" target="_blank" rel="noreferrer">in LinkedIn</a>
+        </div>
+
+        <div class="tiny">
+          Tip: Replace <strong>profile.jpg</strong> with your photo. Keep <strong>CV.pdf</strong> in the same folder.
+        </div>
+      </nav>
+    </aside>
+
+    <!-- Main -->
+    <main id="content">
+      <div class="container">
+        <div class="hero" role="region" aria-label="Intro">
+          <div class="hero-inner">
+            <div class="kicker">🚀 Research • Robotics • Machine Learning</div>
+            <h2>Building reliable UAV autonomy under uncertainty.</h2>
             <p>
-                [cite_start]I am a Master's student in Mechanical Engineering at the University of North Dakota (UND) with a perfect CGPA of 4.0/4.0[cite: 5]. [cite_start]My research focuses on autonomous robotics, specifically UAV navigation, GPS spoofing detection, and robust 3D path planning using machine learning[cite: 23].
+              I’m a Mechanical Engineering MS student at the University of North Dakota, working on autonomous UAV navigation,
+              GPS spoofing detection, federated learning, and robust 3D path planning.
             </p>
-            <br>
-            <p>
-                [cite_start]Previously, I graduated as the Department Topper with a B.E. in Mechanical Engineering from the Institute of Engineering, Pashchimanchal Campus in Nepal[cite: 10]. [cite_start]I am passionate about applying deep learning, reinforcement learning, and physics-informed neural networks (PINN) to solve complex engineering problems[cite: 24].
+
+            <div class="hero-cta">
+              <a class="btn primary" href="#publications">📌 View Publications</a>
+              <a class="btn" href="CV.pdf" target="_blank" rel="noreferrer">📄 Download Resume</a>
+              <a class="btn" href="mailto:sajan.bhujel@und.edu">✉️ Contact</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="grid">
+          <section id="about" class="card" aria-label="About">
+            <div class="section-title">
+              <h3>About</h3>
+              <span>Who I am</span>
+            </div>
+            <p style="color:var(--muted); margin:0;">
+              I’m focused on autonomous robotics and data-driven control for aerial systems—especially making navigation robust
+              when GPS becomes unreliable. I enjoy combining reinforcement learning, domain adaptation, and physics-informed ideas
+              to solve real engineering problems.
             </p>
-        </section>
 
-        <section id="education">
-            <h2>Education</h2>
-            
-            <div class="item">
-                <h3>University of North Dakota</h3>
-                <span class="date">Aug. 2025 – Present | Grand Forks, USA</span>
-                <p><strong>M.S. in Mechanical Engineering</strong> (CGPA: 4.0/4.0)</p>
-                [cite_start]<p><em>Relevant Courses:</em> Introduction to Autonomous Robotics, Reinforcement Learning, Advanced System Modeling, Dynamics, and Control[cite: 7].</p>
+            <div class="badges" aria-label="Focus areas">
+              <span class="badge">Reinforcement Learning</span>
+              <span class="badge">GPS Spoofing Detection</span>
+              <span class="badge">Federated Learning</span>
+              <span class="badge">Domain Adaptation</span>
+              <span class="badge">3D Path Planning</span>
+              <span class="badge">CFD / Simulation</span>
+            </div>
+          </section>
+
+          <section class="card" aria-label="Quick facts">
+            <div class="section-title">
+              <h3>Quick Facts</h3>
+              <span>At a glance</span>
             </div>
 
-            <div class="item">
-                <h3>Institute of Engineering, Pashchimanchal Campus</h3>
-                <span class="date">May 2024 | Pokhara, Nepal</span>
-                <p><strong>B.E. in Mechanical Engineering</strong></p>
-                [cite_start]<p>Graduated with 84.7% (Department Topper)[cite: 10].</p>
-            </div>
-        </section>
-
-        <section id="experience">
-            <h2>Experience</h2>
-
-            <div class="item">
-                <h3>Graduate Research Assistant</h3>
-                <span class="date">University of North Dakota | Aug. 2025 – Present</span>
-                <ul class="details">
-                    [cite_start]<li>Conducted machine-learning-based UAV navigation research focused on GPS spoofing detection and robust 3D drone path planning[cite: 23].</li>
-                    [cite_start]<li>Developed federated learning, domain adaptation, and physics-informed neural network (PINN) methods to enable decentralized, physically consistent UAV navigation[cite: 24].</li>
-                </ul>
-            </div>
-
-            <div class="item">
-                <h3>Teaching Assistant</h3>
-                <span class="date">University of North Dakota | Aug. 2025 – Present</span>
-                <ul class="details">
-                    [cite_start]<li>Instructed and supported a class of 41 undergraduate students in ANSYS-based simulation and numerical analysis[cite: 28].</li>
-                    [cite_start]<li>Graded assignments, evaluated projects, and provided technical feedback to enhance student learning outcomes[cite: 29].</li>
-                </ul>
-            </div>
-
-            <div class="item">
-                <h3>Faculty Lecturer</h3>
-                <span class="date">Tribhuvan University, IOE | Nov. 2024 – July 2025</span>
-                <ul class="details">
-                    [cite_start]<li>Taught Heat Transfer, Turbomachinery, Engineering Drawing, CAD, and Engineering Professional Practice[cite: 33].</li>
-                    [cite_start]<li>Supervised laboratory sessions and guided students in practical engineering applications[cite: 34].</li>
-                </ul>
-            </div>
-
-            <div class="item">
-                <h3>Engineering Intern</h3>
-                <span class="date">Kali Gandaki A Hydropower Station | Sept. 2023 – Nov. 2023</span>
-                <ul class="details">
-                    [cite_start]<li>Assisted in maintenance and inspection of Francis turbines to support efficient operation of a 144 MW hydropower plant[cite: 37].</li>
-                    [cite_start]<li>Performed modeling and simulation tasks using SolidWorks and ANSYS[cite: 38].</li>
-                </ul>
-            </div>
-        </section>
-
-        <section id="publications">
-            <h2>Publications & Research</h2>
-            <ul class="details">
-                [cite_start]<li><strong>Deep Q-Network with Lagrangian Relaxation for Autonomous Aircraft Landing:</strong> Proposed a constrained DQN framework enforcing angle-of-attack safety via Lagrangian relaxation[cite: 14, 15].</li>
-                [cite_start]<li><strong>Analysis and Comparison of UAV Propellers for High-Altitude Search and Rescue Missions:</strong> Validated Clark-Y and S1223 propellers using CFD and high-altitude field tests (3610 m)[cite: 16].</li>
-                [cite_start]<li><strong>Development and Testing of a Non-Contact Wireless Tachometer:</strong> Developed an IR-based wireless tachometer with Bluetooth communication (< 0.3% error up to 6995 RPM)[cite: 17, 18].</li>
-                [cite_start]<li><strong>Aerodynamic Effects of Fuselage-Package Separation Distance on UAV Performance:</strong> Conducted RANS-based CFD analysis in ANSYS Fluent to quantify payload-induced aerodynamic interference[cite: 19].</li>
-            </ul>
-        </section>
-
-        <section id="skills">
-            <h2>Skills</h2>
-            <div class="skills-grid">
-                <div class="item">
-                    <h3>Machine Learning</h3>
-                    [cite_start]<p>PyTorch, NumPy, Pandas, scikit-learn, RL (Reinforcement Learning), Federated Learning[cite: 62].</p>
+            <div class="items">
+              <div class="item">
+                <div class="item-head">
+                  <h4>Location</h4>
+                  <div class="meta">Grand Forks, USA</div>
                 </div>
-                <div class="item">
-                    <h3>Software & Simulation</h3>
-                    [cite_start]<p>Python, SOLIDWORKS, ANSYS, MATLAB, Autodesk[cite: 63].</p>
+                <p class="sub">University of North Dakota (UND)</p>
+              </div>
+
+              <div class="item">
+                <div class="item-head">
+                  <h4>Degree</h4>
+                  <div class="meta">MS Mechanical Engineering</div>
                 </div>
-                <div class="item">
-                    <h3>Other</h3>
-                    [cite_start]<p>Sketching, video editing, team leadership, technical communication[cite: 64].</p>
+                <p class="sub">CGPA: 4.0/4.0</p>
+              </div>
+
+              <div class="item">
+                <div class="item-head">
+                  <h4>Primary Interests</h4>
+                  <div class="meta">UAV autonomy</div>
                 </div>
+                <p class="sub">Robust learning + practical safety constraints</p>
+              </div>
             </div>
+          </section>
+        </div>
+
+        <section id="education" aria-label="Education">
+          <div class="section-title">
+            <h3>Education</h3>
+            <span>Academic background</span>
+          </div>
+
+          <div class="items">
+            <div class="item">
+              <div class="item-head">
+                <h4>University of North Dakota</h4>
+                <div class="meta">Aug 2025 – Present • Grand Forks, USA</div>
+              </div>
+              <p class="sub"><strong>M.S. in Mechanical Engineering</strong> • CGPA: 4.0/4.0</p>
+              <p class="sub">
+                <em>Courses:</em> Introduction to Autonomous Robotics, Reinforcement Learning, Advanced System Modeling,
+                Dynamics, and Control.
+              </p>
+            </div>
+
+            <div class="item">
+              <div class="item-head">
+                <h4>Institute of Engineering, Pashchimanchal Campus</h4>
+                <div class="meta">May 2024 • Pokhara, Nepal</div>
+              </div>
+              <p class="sub"><strong>B.E. in Mechanical Engineering</strong> • 84.7% (Department Topper)</p>
+            </div>
+          </div>
         </section>
 
-        <section id="leadership">
-            <h2>Leadership & Volunteering</h2>
+        <section id="experience" aria-label="Experience">
+          <div class="section-title">
+            <h3>Experience</h3>
+            <span>Roles & impact</span>
+          </div>
+
+          <div class="items">
             <div class="item">
-                <h3>President - SEDS-WRC</h3>
-                <span class="date">May 2023 – May 2024</span>
-                [cite_start]<p>Led astronomy outreach initiatives, organized telescope training, and conducted solar/lunar observation programs across multiple schools[cite: 48].</p>
+              <div class="item-head">
+                <h4>Graduate Research Assistant — University of North Dakota</h4>
+                <div class="meta">Aug 2025 – Present</div>
+              </div>
+              <ul class="bullets">
+                <li>UAV navigation research focused on GPS spoofing detection and robust 3D drone path planning.</li>
+                <li>Developing federated learning, domain adaptation, and physics-informed methods for decentralized autonomy.</li>
+              </ul>
             </div>
+
             <div class="item">
-                <h3>Executive Member - Robotics Club</h3>
-                <span class="date">Pashchimanchal Campus | May 2022 – May 2023</span>
-                [cite_start]<p>Designed line-following and robosoccer robots; developed two electric go-karts, and organized SolidWorks/3D printing workshops[cite: 52].</p>
+              <div class="item-head">
+                <h4>Teaching Assistant — University of North Dakota</h4>
+                <div class="meta">Aug 2025 – Present</div>
+              </div>
+              <ul class="bullets">
+                <li>Supported a class of 41 undergraduate students in ANSYS-based simulation and numerical analysis.</li>
+                <li>Graded assignments and projects; provided detailed feedback to improve technical outcomes.</li>
+              </ul>
             </div>
+
+            <div class="item">
+              <div class="item-head">
+                <h4>Faculty Lecturer — Tribhuvan University (IOE)</h4>
+                <div class="meta">Nov 2024 – Jul 2025</div>
+              </div>
+              <ul class="bullets">
+                <li>Taught Heat Transfer, Turbomachinery, Engineering Drawing, CAD, and Professional Practice.</li>
+                <li>Supervised labs and guided students in practical engineering applications.</li>
+              </ul>
+            </div>
+
+            <div class="two-col">
+              <div class="item">
+                <div class="item-head">
+                  <h4>Engineering Intern — Kali Gandaki A Hydropower Station</h4>
+                  <div class="meta">Sep 2023 – Nov 2023</div>
+                </div>
+                <ul class="bullets">
+                  <li>Assisted in inspection/maintenance of Francis turbines (144 MW plant).</li>
+                  <li>Performed modeling/simulation using SolidWorks and ANSYS.</li>
+                </ul>
+              </div>
+
+              <div class="item">
+                <div class="item-head">
+                  <h4>Intern — Parbhu Helicopter</h4>
+                  <div class="meta">Oct 2022 – Dec 2022</div>
+                </div>
+                <ul class="bullets">
+                  <li>Pre-flight/post-flight inspections and maintenance support for Robinson R66 / R44 II.</li>
+                  <li>Assisted inspection/testing procedures under supervision.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
         </section>
 
+        <section id="publications" aria-label="Publications">
+          <div class="section-title">
+            <h3>Publications & Research</h3>
+            <span>Selected work</span>
+          </div>
+
+          <div class="pub">
+            <div class="item">
+              <div class="item-head">
+                <h4>Deep Q-Network with Lagrangian Relaxation for Autonomous Aircraft Landing</h4>
+                <div class="meta">Publication</div>
+              </div>
+              <p class="sub">
+                Proposed a constrained DQN framework enforcing angle-of-attack safety via Lagrangian relaxation.
+                <a class="link" href="#" target="_blank" rel="noreferrer">Add link ↗</a>
+              </p>
+              <div class="badges">
+                <span class="badge">RL</span><span class="badge">Safety</span><span class="badge">Constraints</span>
+              </div>
+            </div>
+
+            <div class="item">
+              <div class="item-head">
+                <h4>Analysis and Comparison of UAV Propellers for High-Altitude Search and Rescue Missions</h4>
+                <div class="meta">Publication</div>
+              </div>
+              <p class="sub">
+                Validated Clark-Y and S1223 propellers using CFD and high-altitude field tests (3610 m).
+                <a class="link" href="#" target="_blank" rel="noreferrer">Add link ↗</a>
+              </p>
+              <div class="badges">
+                <span class="badge">CFD</span><span class="badge">Aerodynamics</span><span class="badge">Testing</span>
+              </div>
+            </div>
+
+            <div class="item">
+              <div class="item-head">
+                <h4>Development and Testing of a Non-Contact Wireless Tachometer</h4>
+                <div class="meta">Publication</div>
+              </div>
+              <p class="sub">
+                Built an IR-based tachometer with Bluetooth communication (&lt;0.3% error up to 6995 RPM).
+                <a class="link" href="#" target="_blank" rel="noreferrer">Add link ↗</a>
+              </p>
+              <div class="badges">
+                <span class="badge">Hardware</span><span class="badge">Instrumentation</span><span class="badge">IoT</span>
+              </div>
+            </div>
+
+            <div class="item">
+              <div class="item-head">
+                <h4>Aerodynamic Effects of Fuselage–Package Separation Distance on UAV Performance</h4>
+                <div class="meta">Under review</div>
+              </div>
+              <p class="sub">
+                RANS-based CFD in ANSYS Fluent to quantify payload-induced aerodynamic interference and optimal separation distances.
+                <a class="link" href="#" target="_blank" rel="noreferrer">Add link ↗</a>
+              </p>
+              <div class="badges">
+                <span class="badge">RANS</span><span class="badge">ANSYS Fluent</span><span class="badge">UAV</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="skills" aria-label="Skills">
+          <div class="section-title">
+            <h3>Skills</h3>
+            <span>Tools & strengths</span>
+          </div>
+
+          <div class="items">
+            <div class="item">
+              <div class="item-head">
+                <h4>Machine Learning</h4>
+                <div class="meta">Core stack</div>
+              </div>
+              <div class="badges">
+                <span class="badge">PyTorch</span>
+                <span class="badge">NumPy</span>
+                <span class="badge">Pandas</span>
+                <span class="badge">scikit-learn</span>
+                <span class="badge">Linear Regression</span>
+                <span class="badge">Classification</span>
+                <span class="badge">Reinforcement Learning</span>
+                <span class="badge">Federated Learning</span>
+              </div>
+            </div>
+
+            <div class="two-col">
+              <div class="item">
+                <div class="item-head">
+                  <h4>Software & Simulation</h4>
+                  <div class="meta">Engineering</div>
+                </div>
+                <div class="badges">
+                  <span class="badge">Python</span>
+                  <span class="badge">SOLIDWORKS</span>
+                  <span class="badge">ANSYS</span>
+                  <span class="badge">MATLAB</span>
+                  <span class="badge">Autodesk</span>
+                </div>
+              </div>
+
+              <div class="item">
+                <div class="item-head">
+                  <h4>Other</h4>
+                  <div class="meta">Professional</div>
+                </div>
+                <div class="badges">
+                  <span class="badge">Technical Communication</span>
+                  <span class="badge">Leadership</span>
+                  <span class="badge">Teamwork</span>
+                  <span class="badge">Sketching</span>
+                  <span class="badge">Video Editing</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="leadership" aria-label="Leadership & volunteering">
+          <div class="section-title">
+            <h3>Leadership & Volunteering</h3>
+            <span>Community</span>
+          </div>
+
+          <div class="items">
+            <div class="item">
+              <div class="item-head">
+                <h4>President — SEDS-WRC</h4>
+                <div class="meta">May 2023 – May 2024</div>
+              </div>
+              <p class="sub">
+                Led astronomy outreach: telescope training, solar/lunar observation programs, and school engagement initiatives.
+              </p>
+            </div>
+
+            <div class="item">
+              <div class="item-head">
+                <h4>Executive Member — Robotics Club (Pashchimanchal Campus)</h4>
+                <div class="meta">May 2022 – May 2023</div>
+              </div>
+              <p class="sub">
+                Designed line-following/robosoccer robots; developed electric go-karts; organized SolidWorks and 3D printing workshops.
+              </p>
+            </div>
+
+            <div class="two-col">
+              <div class="item">
+                <div class="item-head">
+                  <h4>Volunteer — Mission Oxygen Team</h4>
+                  <div class="meta">Jun 2021 – Apr 2022</div>
+                </div>
+                <p class="sub">Maintained real-time COVID-19 resource data for public helpline support.</p>
+              </div>
+
+              <div class="item">
+                <div class="item-head">
+                  <h4>Volunteer — SIMES</h4>
+                  <div class="meta">Nov 2020 – Oct 2021</div>
+                </div>
+                <p class="sub">Contributed to “MECHAZINE” and organized training programs (SolidWorks/ANSYS/paper writing).</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="contact" aria-label="Contact">
+          <div class="section-title">
+            <h3>Contact</h3>
+            <span>Let’s connect</span>
+          </div>
+
+          <div class="items">
+            <div class="item">
+              <div class="item-head">
+                <h4>Reach out</h4>
+                <div class="meta">Email / LinkedIn</div>
+              </div>
+              <p class="sub" style="margin-bottom: 10px;">
+                Best way to reach me is email. I’m also active on LinkedIn.
+              </p>
+
+              <div class="hero-cta" style="margin-top:0;">
+                <a class="btn primary" href="mailto:sajan.bhujel@und.edu">✉️ sajan.bhujel@und.edu</a>
+                <a class="btn" href="https://linkedin.com/in/sajanbhujel" target="_blank" rel="noreferrer">in linkedin.com/in/sajanbhujel</a>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <div class="footer">
+          © <span id="year"></span> Sajan Bhujel • Built with HTML/CSS • <a class="link" href="#content">Back to top</a>
+        </div>
+      </div>
     </main>
+  </div>
+
+  <script>
+    // -------------------------
+    // Small JS: theme + nav UX
+    // -------------------------
+    const root = document.documentElement;
+    const yearEl = document.getElementById("year");
+    yearEl.textContent = new Date().getFullYear();
+
+    // Theme
+    const savedTheme = localStorage.getItem("theme");
+    if (savedTheme === "dark" || savedTheme === "light") {
+      root.setAttribute("data-theme", savedTheme);
+    }
+
+    function toggleTheme(){
+      const current = root.getAttribute("data-theme") || "light";
+      const next = current === "light" ? "dark" : "light";
+      root.setAttribute("data-theme", next);
+      localStorage.setItem("theme", next);
+    }
+
+    document.getElementById("themeBtn")?.addEventListener("click", toggleTheme);
+    document.getElementById("themeBtnMobile")?.addEventListener("click", toggleTheme);
+
+    // Mobile drawer
+    const drawer = document.getElementById("drawer");
+    document.getElementById("menuBtn")?.addEventListener("click", () => {
+      drawer.classList.toggle("open");
+    });
+    // close drawer when clicking a link
+    document.querySelectorAll("#navLinksMobile a").forEach(a => {
+      a.addEventListener("click", () => drawer.classList.remove("open"));
+    });
+
+    // Active link highlighting (desktop + mobile)
+    const sections = Array.from(document.querySelectorAll("main section[id]"));
+    const navSets = [
+      document.getElementById("navLinks"),
+      document.getElementById("navLinksMobile")
+    ].filter(Boolean);
+
+    const linkMap = new Map();
+    navSets.forEach(ul => {
+      ul.querySelectorAll("a[href^='#']").forEach(a => linkMap.set(a.getAttribute("href"), true));
+    });
+
+    function setActive(hash){
+      navSets.forEach(ul => {
+        ul.querySelectorAll("a").forEach(a => a.classList.remove("active"));
+        const active = ul.querySelector(`a[href='${hash}']`);
+        if (active) active.classList.add("active");
+      });
+    }
+
+    const obs = new IntersectionObserver((entries) => {
+      const visible = entries
+        .filter(e => e.isIntersecting)
+        .sort((a,b) => b.intersectionRatio - a.intersectionRatio)[0];
+      if (visible?.target?.id) setActive("#" + visible.target.id);
+    }, { root: null, threshold: [0.2, 0.35, 0.5, 0.7] });
+
+    sections.forEach(s => obs.observe(s));
+
+    // Fallback active on load
+    if (location.hash && linkMap.has(location.hash)) setActive(location.hash);
+    else setActive("#about");
+  </script>
 </body>
 </html>
