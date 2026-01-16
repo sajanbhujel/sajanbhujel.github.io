@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sajan Bhujel - Portfolio</title>
+    <style>
+        /* General Reset */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            color: #333;
+            line-height: 1.6;
+            background-color: #fff;
+            display: flex;
+            min-height: 100vh;
+        }
+
+        a {
+            color: #0066cc;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        /* Sidebar Navigation */
+        nav {
+            width: 280px;
+            background-color: #f8f9fa;
+            padding: 40px 20px;
+            position: fixed;
+            height: 100%;
+            border-right: 1px solid #eee;
+            overflow-y: auto;
+        }
+
+        .profile-section {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .profile-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background-color: #ddd; /* Placeholder color */
+            margin: 0 auto 15px;
+            object-fit: cover;
+            border: 3px solid #fff;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .name {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .tagline {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        .nav-links {
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-bottom: 10px;
+        }
+
+        .nav-links a {
+            color: #555;
+            font-weight: 500;
+            display: block;
+            padding: 5px 0;
+        }
+
+        .nav-links a:hover {
+            color: #000;
+        }
+
+        .social-links {
+            margin-top: 30px;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        /* Main Content */
+        main {
+            flex: 1;
+            margin-left: 280px; /* Width of sidebar */
+            padding: 60px 80px;
+            max-width: 900px;
+        }
+
+        section {
+            margin-bottom: 60px;
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+            color: #222;
+        }
+
+        h3 {
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+            color: #333;
+        }
+
+        .date {
+            font-size: 0.9rem;
+            color: #777;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .item {
+            margin-bottom: 25px;
+        }
+
+        .item p {
+            margin-bottom: 8px;
+        }
+
+        ul.details {
+            list-style-type: disc;
+            margin-left: 20px;
+            color: #444;
+        }
+
+        ul.details li {
+            margin-bottom: 5px;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            body {
+                flex-direction: column;
+            }
+            nav {
+                width: 100%;
+                height: auto;
+                position: relative;
+                border-right: none;
+                border-bottom: 1px solid #eee;
+            }
+            main {
+                margin-left: 0;
+                padding: 40px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="profile-section">
+            <img src="profile.jpg" alt="Sajan Bhujel" class="profile-img">
+            <div class="name">Sajan Bhujel</div>
+            <div class="tagline">MS Candidate in Mechanical Engineering<br>University of North Dakota</div>
+        </div>
+
+        <ul class="nav-links">
+            <li><a href="#about">About</a></li>
+            <li><a href="#education">Education</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#publications">Publications</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#leadership">Leadership</a></li>
+            <li><a href="CV.pdf" target="_blank">Resume (PDF)</a></li>
+        </ul>
+
+        <div class="social-links">
+            <a href="mailto:sajan.bhujel@und.edu">Email</a>
+            <a href="https://linkedin.com/in/sajanbhujel" target="_blank">LinkedIn</a>
+        </div>
+    </nav>
+
+    <main>
+        
+        <section id="about">
+            <h2>About Me</h2>
+            <p>
+                [cite_start]I am a Master's student in Mechanical Engineering at the University of North Dakota (UND) with a perfect CGPA of 4.0/4.0[cite: 5]. [cite_start]My research focuses on autonomous robotics, specifically UAV navigation, GPS spoofing detection, and robust 3D path planning using machine learning[cite: 23].
+            </p>
+            <br>
+            <p>
+                [cite_start]Previously, I graduated as the Department Topper with a B.E. in Mechanical Engineering from the Institute of Engineering, Pashchimanchal Campus in Nepal[cite: 10]. [cite_start]I am passionate about applying deep learning, reinforcement learning, and physics-informed neural networks (PINN) to solve complex engineering problems[cite: 24].
+            </p>
+        </section>
+
+        <section id="education">
+            <h2>Education</h2>
+            
+            <div class="item">
+                <h3>University of North Dakota</h3>
+                <span class="date">Aug. 2025 – Present | Grand Forks, USA</span>
+                <p><strong>M.S. in Mechanical Engineering</strong> (CGPA: 4.0/4.0)</p>
+                [cite_start]<p><em>Relevant Courses:</em> Introduction to Autonomous Robotics, Reinforcement Learning, Advanced System Modeling, Dynamics, and Control[cite: 7].</p>
+            </div>
+
+            <div class="item">
+                <h3>Institute of Engineering, Pashchimanchal Campus</h3>
+                <span class="date">May 2024 | Pokhara, Nepal</span>
+                <p><strong>B.E. in Mechanical Engineering</strong></p>
+                [cite_start]<p>Graduated with 84.7% (Department Topper)[cite: 10].</p>
+            </div>
+        </section>
+
+        <section id="experience">
+            <h2>Experience</h2>
+
+            <div class="item">
+                <h3>Graduate Research Assistant</h3>
+                <span class="date">University of North Dakota | Aug. 2025 – Present</span>
+                <ul class="details">
+                    [cite_start]<li>Conducted machine-learning-based UAV navigation research focused on GPS spoofing detection and robust 3D drone path planning[cite: 23].</li>
+                    [cite_start]<li>Developed federated learning, domain adaptation, and physics-informed neural network (PINN) methods to enable decentralized, physically consistent UAV navigation[cite: 24].</li>
+                </ul>
+            </div>
+
+            <div class="item">
+                <h3>Teaching Assistant</h3>
+                <span class="date">University of North Dakota | Aug. 2025 – Present</span>
+                <ul class="details">
+                    [cite_start]<li>Instructed and supported a class of 41 undergraduate students in ANSYS-based simulation and numerical analysis[cite: 28].</li>
+                    [cite_start]<li>Graded assignments, evaluated projects, and provided technical feedback to enhance student learning outcomes[cite: 29].</li>
+                </ul>
+            </div>
+
+            <div class="item">
+                <h3>Faculty Lecturer</h3>
+                <span class="date">Tribhuvan University, IOE | Nov. 2024 – July 2025</span>
+                <ul class="details">
+                    [cite_start]<li>Taught Heat Transfer, Turbomachinery, Engineering Drawing, CAD, and Engineering Professional Practice[cite: 33].</li>
+                    [cite_start]<li>Supervised laboratory sessions and guided students in practical engineering applications[cite: 34].</li>
+                </ul>
+            </div>
+
+            <div class="item">
+                <h3>Engineering Intern</h3>
+                <span class="date">Kali Gandaki A Hydropower Station | Sept. 2023 – Nov. 2023</span>
+                <ul class="details">
+                    [cite_start]<li>Assisted in maintenance and inspection of Francis turbines to support efficient operation of a 144 MW hydropower plant[cite: 37].</li>
+                    [cite_start]<li>Performed modeling and simulation tasks using SolidWorks and ANSYS[cite: 38].</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="publications">
+            <h2>Publications & Research</h2>
+            <ul class="details">
+                [cite_start]<li><strong>Deep Q-Network with Lagrangian Relaxation for Autonomous Aircraft Landing:</strong> Proposed a constrained DQN framework enforcing angle-of-attack safety via Lagrangian relaxation[cite: 14, 15].</li>
+                [cite_start]<li><strong>Analysis and Comparison of UAV Propellers for High-Altitude Search and Rescue Missions:</strong> Validated Clark-Y and S1223 propellers using CFD and high-altitude field tests (3610 m)[cite: 16].</li>
+                [cite_start]<li><strong>Development and Testing of a Non-Contact Wireless Tachometer:</strong> Developed an IR-based wireless tachometer with Bluetooth communication (< 0.3% error up to 6995 RPM)[cite: 17, 18].</li>
+                [cite_start]<li><strong>Aerodynamic Effects of Fuselage-Package Separation Distance on UAV Performance:</strong> Conducted RANS-based CFD analysis in ANSYS Fluent to quantify payload-induced aerodynamic interference[cite: 19].</li>
+            </ul>
+        </section>
+
+        <section id="skills">
+            <h2>Skills</h2>
+            <div class="skills-grid">
+                <div class="item">
+                    <h3>Machine Learning</h3>
+                    [cite_start]<p>PyTorch, NumPy, Pandas, scikit-learn, RL (Reinforcement Learning), Federated Learning[cite: 62].</p>
+                </div>
+                <div class="item">
+                    <h3>Software & Simulation</h3>
+                    [cite_start]<p>Python, SOLIDWORKS, ANSYS, MATLAB, Autodesk[cite: 63].</p>
+                </div>
+                <div class="item">
+                    <h3>Other</h3>
+                    [cite_start]<p>Sketching, video editing, team leadership, technical communication[cite: 64].</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="leadership">
+            <h2>Leadership & Volunteering</h2>
+            <div class="item">
+                <h3>President - SEDS-WRC</h3>
+                <span class="date">May 2023 – May 2024</span>
+                [cite_start]<p>Led astronomy outreach initiatives, organized telescope training, and conducted solar/lunar observation programs across multiple schools[cite: 48].</p>
+            </div>
+            <div class="item">
+                <h3>Executive Member - Robotics Club</h3>
+                <span class="date">Pashchimanchal Campus | May 2022 – May 2023</span>
+                [cite_start]<p>Designed line-following and robosoccer robots; developed two electric go-karts, and organized SolidWorks/3D printing workshops[cite: 52].</p>
+            </div>
+        </section>
+
+    </main>
+</body>
+</html>
